@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --crimson: #8B1A2B;
+    --crimson-deep: #5a0f1b;
+    --crimson-light: #c4324a;
+    --rose: #e8a4b0;
+    --cream: #fdf6f0;
+    --ink: #0f0508;
+    --ink-mid: #1e0c12;
   }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    cursor: none;
+  }
+
+  ::selection {
+    background: var(--crimson);
+    color: var(--cream);
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 2px; }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-crimson { color: var(--crimson); }
+  .text-crimson-light { color: var(--crimson-light); }
+  .text-rose-bloom { color: var(--rose); }
+  .text-cream { color: var(--cream); }
+  .bg-crimson { background-color: var(--crimson); }
+  .bg-ink { background-color: var(--ink); }
+  .bg-ink-mid { background-color: var(--ink-mid); }
+  .border-crimson { border-color: var(--crimson); }
+}
+
+
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-serif-italic {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+}
+
+/* Grain texture overlay */
+.grain-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Staggered text reveal */
+.reveal-char {
+  display: inline-block;
+  overflow: hidden;
 }
