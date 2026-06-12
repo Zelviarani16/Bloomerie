@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image"
 
 const PETALS = Array.from({ length: 25 }, (_, i) => ({
   id: i,
@@ -146,8 +147,8 @@ export default function HeroSection() {
             className="flex items-center gap-3 mb-8"
           >
             <span
-              className="font-display text-xl italic text-[var(--rose)] font-light"
-              style={{ fontFamily: "'Libre Baskerville', serif", fontStyle: "italic" }}
+              className="!text-[var(--cream-mid)] font-display text-xl italic font-light leading-relaxed"
+              style={{ fontFamily: "'Libre Baskerville', serif", fontStyle: "italic", }}
             >
               Setiap buket bercerita tentang
             </span>
@@ -244,7 +245,12 @@ export default function HeroSection() {
             className="absolute right-0 top-8 w-72 h-96 rounded-sm overflow-hidden border border-[rgba(139,26,43,0.4)]"
             style={{ background: "linear-gradient(135deg, #3d0f1a, #5a1525)" }}
           >
-            {/* Placeholder — replace with <Image src="/flowers/hero-1.jpg" fill ... /> */}
+            <Image
+              src="/images/eternal-rose.jpg"
+              alt="Hero atas eternal rose"
+              fill
+              className="object-cover"
+            />
             <div className="w-full h-full flex items-end p-6" style={{ background: "linear-gradient(180deg, rgba(139,26,43,0.1) 0%, rgba(15,5,8,0.8) 100%)" }}>
               <div>
                 <p className="text-xs tracking-[0.3em] uppercase text-[var(--rose)] font-body mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Unggulan</p>
@@ -263,6 +269,12 @@ export default function HeroSection() {
             className="absolute left-0 bottom-12 w-56 h-72 rounded-sm overflow-hidden border border-[rgba(139,26,43,0.3)]"
             style={{ background: "linear-gradient(135deg, #1e0c12, #3d0f1a)" }}
           >
+            <Image
+              src="/images/pastel-dream.jpg"
+              alt="Hero atas eternal rose"
+              fill
+              className="object-cover"
+            />
             <div className="w-full h-full flex items-end p-5" style={{ background: "linear-gradient(180deg, transparent 40%, rgba(15,5,8,0.85) 100%)" }}>
               <div>
                 <p className="font-display text-lg text-[var(--cream)]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Pastel Dream</p>
@@ -272,18 +284,6 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
-            className="absolute top-24 left-16 w-20 h-20 rounded-full border border-[var(--crimson)] flex items-center justify-center"
-            style={{ background: "var(--ink-mid)" }}
-          >
-            <div className="text-center">
-              <div className="text-xs font-display italic text-[var(--rose)]" style={{ fontFamily: "'Libre Baskerville', serif", fontStyle: "italic" }}>Fresh</div>
-              <div className="text-[8px] tracking-widest uppercase text-[var(--crimson-light)] font-body" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Daily</div>
-            </div>
-          </motion.div>
         </motion.div>
       </motion.div>
 

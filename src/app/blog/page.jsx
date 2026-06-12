@@ -19,6 +19,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Image from "next/image"
 
 const ARTICLES = [
   {
@@ -26,66 +27,72 @@ const ARTICLES = [
     title: "The Art of Mindful Floristry: Curating Your Sanctuary",
     excerpt: "Membawa ketenangan alam ke ruang hidup Anda melalui seni merangkai bunga yang penuh kesadaran.",
     author: "Elena Rosewood",
-    date: "28 Okt 2024",
+    date: "10 Mei 2026",
     readTime: "12 menit",
     tag: "Floral Artistry",
     featured: true,
     bgColor: "#D8C8BC",
+    image: "/images/cerita.jpg",
   },
   {
     id: 2,
     title: "Minimalism untuk Pemula: Sederhanakan Hidup Anda",
     excerpt: "Pelajari cara mengurangi kebisingan dan fokus pada esensi terbaik dari setiap ruangan.",
     author: "Rika Santoso",
-    date: "15 Okt 2024",
+    date: "21 April 2026",
     readTime: "8 menit",
     tag: "Simplicity",
     featured: false,
     bgColor: "#E8E0D0",
+    image: "/images/artikel1.jpg",
   },
   {
     id: 3,
     title: "Tren Bunga Terpopuler untuk Musim 2025",
     excerpt: "Dari rangkaian sculptural hingga wildflower liar — ini yang akan mendominasi tahun depan.",
     author: "Dini Pratiwi",
-    date: "2 Okt 2024",
+    date: "17 Februari 2026",
     readTime: "6 menit",
     tag: "Insights",
     featured: false,
     bgColor: "#D0D8C8",
+    image: "/images/artikel2.jpg",
   },
   {
     id: 4,
     title: "Digital Detox: Merebut Kembali Perhatian Anda",
     excerpt: "Bagaimana keterlibatan dengan alam bisa menjadi antidot paling sederhana dari kelelahan digital.",
     author: "Fajar Nugroho",
-    date: "20 Sep 2024",
+    date: "26 Mei 2026",
     readTime: "10 menit",
     tag: "Lifestyle",
     featured: false,
     bgColor: "#DCD0E8",
+    image: "/images/artikel3.jpg",
   },
   {
     id: 5,
     title: "Tips Merawat Buket Agar Tahan Lama",
     excerpt: "Rahasia dari florist profesional untuk menjaga kesegaran bunga potong di rumah selama mungkin.",
     author: "Sari Wulandari",
-    date: "10 Sep 2024",
+    date: "21 Maret 2026",
     readTime: "5 menit",
     tag: "Tips & Perawatan",
     featured: false,
     bgColor: "#E8D8C8",
+    image: "/images/artikel4.jpg",
   },
   {
     id: 6,
     title: "Memilih Buket untuk Setiap Momen",
     excerpt: "Panduan lengkap memilih rangkaian yang tepat — dari ulang tahun, pernikahan, hingga duka cita.",
     author: "Elena Rosewood",
-    date: "1 Sep 2024",
+    date: "18 April 2026",
     readTime: "7 menit",
     tag: "Panduan",
     featured: false,
     bgColor: "#C8D8E8",
+    image: "/images/artikel5.jpg",
   },
 ];
 
@@ -147,15 +154,18 @@ export default function BlogPage() {
                   <motion.div
                     whileHover={{ scale: 1.04 }}
                     transition={{ duration: 0.6 }}
-                    className="absolute inset-0 flex items-center justify-center opacity-20"
+                    className="absolute inset-0 flex items-center justify-center opacity-90"
                   >
-                    <svg viewBox="0 0 120 160" className="w-2/3" fill="none">
-                      {[0,60,120,180,240,300].map((a,i) => (
-                        <ellipse key={i} cx="60" cy="30" rx="16" ry="28"
-                          fill="var(--crimson)" transform={`rotate(${a} 60 70)`} opacity="0.8"/>
-                      ))}
-                      <circle cx="60" cy="70" r="14" fill="white" opacity="0.5"/>
-                    </svg>
+<Image
+    src={featured.image}
+    alt={featured.title}
+    fill
+    className="object-cover"
+/>
+
+
+
+
                   </motion.div>
 
                   {/* Tag label di atas gambar */}
@@ -246,20 +256,20 @@ export default function BlogPage() {
                 <Link href={`/blog/${article.id}`} className="group block">
                   {/* Gambar card */}
                   <div
-                    className="overflow-hidden mb-4"
+                    className="relative overflow-hidden mb-4"
                     style={{ background: article.bgColor, aspectRatio: "4/3" }}
                   >
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.5 }}
-                      className="w-full h-full flex items-center justify-center opacity-20"
+                      className="w-full h-full flex items-center justify-center"
                     >
-                      <svg viewBox="0 0 80 80" className="w-1/2" fill="none">
-                        {[0,72,144,216,288].map((a,j) => (
-                          <ellipse key={j} cx="40" cy="16" rx="10" ry="16"
-                            fill="var(--crimson)" transform={`rotate(${a} 40 40)`} opacity="0.8"/>
-                        ))}
-                      </svg>
+     <Image
+      src={article.image}
+      alt={article.title}
+      fill
+      className="object-cover"
+    />
                     </motion.div>
                   </div>
 

@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image"
 
 const products = [
   {
@@ -11,6 +12,7 @@ const products = [
     category: "Bouquet Premium",
     price: "250.000",
     tag: "Terlaris",
+    image: "/images/eternal-rose.jpg",
     gradient: "linear-gradient(160deg, #5a0f1b 0%, #8B1A2B 100%)",
   },
   {
@@ -19,6 +21,7 @@ const products = [
     category: "Bouquet Kasual",
     price: "185.000",
     tag: "Baru",
+    image: "/images/pastel-dream.jpg",
     gradient: "linear-gradient(160deg, #2d0a18 0%, #6b1535 100%)",
   },
   {
@@ -27,6 +30,7 @@ const products = [
     category: "Bouquet Wedding",
     price: "320.000",
     tag: "Eksklusif",
+    image: "/images/white-elegance.jpg",
     gradient: "linear-gradient(160deg, #1a0a0e 0%, #3d1220 100%)",
   },
   {
@@ -34,7 +38,8 @@ const products = [
     name: "Sunrise Gerbera",
     category: "Bunga Potong",
     price: "145.000",
-    tag: null,
+    tag: "Baru",
+    image: "/images/sunrise-gerbera.jpg",
     gradient: "linear-gradient(160deg, #3d1708 0%, #7a2b10 100%)",
   },
 ];
@@ -77,7 +82,14 @@ function ProductCard({ product, index }) {
           className="relative overflow-hidden rounded-sm"
           style={{ background: product.gradient, aspectRatio: "3/4" }}
         >
-          {/* Flower placeholder — swap with <Image> */}
+          {product.image ? (
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-cover"
+            />
+          ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <svg viewBox="0 0 100 120" className="w-2/3 opacity-20" fill="none">
               <ellipse cx="50" cy="30" rx="18" ry="28" fill="rgba(253,246,240,0.6)" />
@@ -86,13 +98,16 @@ function ProductCard({ product, index }) {
               <rect x="47" y="55" width="6" height="50" rx="3" fill="rgba(80,160,80,0.4)" />
             </svg>
           </div>
+          )}
 
           {/* Hover overlay */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: hovered ? 1 : 0 }}
+          <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(0deg, rgba(15,5,8,0.95) 0%, rgba(139,26,43,0.2) 60%, transparent 100%)" }}
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 45%, rgba(15,5,8,0.98) 100%)",
+
+            }}
           />
 
           {/* Tag */}

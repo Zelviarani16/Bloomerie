@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import MarqueeStrip from "@/components/MarqueeStrip";
 import FeaturedBouquets from "@/components/FeaturedBouquets";
 import AboutSection from "@/components/AboutSection";
 import TestimonialSection from "@/components/TestimonialSection";
@@ -17,7 +16,6 @@ export default function Home() {
       <CursorGlow />
       <Navbar />
       <HeroSection />
-      <MarqueeStrip />
       <FeaturedBouquets />
       <AboutSection />
       <TestimonialSection />

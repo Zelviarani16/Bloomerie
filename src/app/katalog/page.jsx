@@ -21,6 +21,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Image from "next/image"
 
 // ── Data produk (nanti ganti dengan fetch dari API/CMS) ──
 const ALL_PRODUCTS = [
@@ -77,6 +78,17 @@ function ProductCard({ product, index }) {
         )}
 
         {/* Placeholder foto — ganti dengan <Image src="..." fill className="object-cover" /> */}
+
+                    <Image
+                        src="/images/katalog.jpg"
+                        alt="Heading Navbar"
+                        fill
+                        className="object-cover"
+                      />          
+                      
+                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,5,8,0.7) 0%, transparent 60%)" }}>
+
+                      </div>
         <div className="absolute inset-0 flex items-center justify-center opacity-20">
           <svg viewBox="0 0 80 100" className="w-1/2" fill="none">
             {[0,60,120,180,240,300].map((a,i) => (

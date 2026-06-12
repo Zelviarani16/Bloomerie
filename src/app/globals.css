@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
 
+/* ─── CSS Variables (warna brand Bloomerie) ─── */
 @layer base {
   :root {
-    --crimson: #8B1A2B;
-    --crimson-deep: #5a0f1b;
-    --crimson-light: #c4324a;
-    --rose: #e8a4b0;
-    --cream: #fdf6f0;
-    --ink: #0f0508;
-    --ink-mid: #1e0c12;
+    --crimson: #8B2035;
+    --crimson-light: #A8293F;
+    --ink: #1C1C1A;
+    --ink-mid: #3A3A38;
+    --stone: #6B6560;
+    --stone-light: #9C8E82;
+    --cream: #FAF8F5;
+    --cream-mid: #EDE8E1;
+    --border: #E8E3DC;
   }
 
   * {
@@ -17,15 +21,13 @@
     padding: 0;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
-    background: var(--ink);
-    color: var(--cream);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    cursor: none;
+    background: var(--cream);
+    color: var(--ink);
+    /* DM Sans untuk body text — clean, tidak terlalu AI */
+    font-family: 'DM Sans', sans-serif;
   }
 
   ::selection {
@@ -33,50 +35,56 @@
     color: var(--cream);
   }
 
-  /* scrollbar */
   ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-track { background: var(--cream); }
   ::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 2px; }
 }
 
+/* ─── Utility classes kustom (pelengkap Tailwind) ─── */
 @layer utilities {
+  /* Font helpers */
+  .font-logo {
+    /* Fraunces: optical size font, berkarakter kuat, tidak mainstream */
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 144; /* optical size besar = lebih tegas */
+    font-weight: 400;
+  }
+
+  .font-serif-accent {
+    /* Instrument Serif: untuk italic aksen, lebih hidup dari Cormorant */
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+  }
+
+  .font-body {
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Warna */
   .text-crimson { color: var(--crimson); }
-  .text-crimson-light { color: var(--crimson-light); }
-  .text-rose-bloom { color: var(--rose); }
+  .text-stone { color: var(--stone); }
   .text-cream { color: var(--cream); }
   .bg-crimson { background-color: var(--crimson); }
-  .bg-ink { background-color: var(--ink); }
-  .bg-ink-mid { background-color: var(--ink-mid); }
-  .border-crimson { border-color: var(--crimson); }
+  .bg-cream { background-color: var(--cream); }
+  .border-brand { border-color: var(--border); }
 }
 
-
-.font-display {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+/* ─── Marquee animation (dipakai di MarqueeStrip.jsx) ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 22s linear infinite;
 }
 
-.font-body {
-  font-family: 'Space Grotesk', sans-serif;
-}
-
-.font-serif-italic {
-  font-family: 'Libre Baskerville', serif;
-  font-style: italic;
-}
-
-/* Grain texture overlay */
-.grain-overlay::after {
+/* ─── Grain overlay (opsional, dipakai di hero) ─── */
+.grain-overlay::before {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
-}
-
-/* Staggered text reveal */
-.reveal-char {
-  display: inline-block;
-  overflow: hidden;
+  z-index: 1;
+  opacity: 0.3;
 }

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import Image from "next/image"
 
 export default function AboutSection() {
   const ref = useRef(null);
@@ -49,21 +50,13 @@ export default function AboutSection() {
               style={{ background: "linear-gradient(135deg, var(--crimson-deep), var(--ink-mid))", border: "1px solid rgba(139,26,43,0.4)" }}
             >
               {/* Flower illustration placeholder */}
+              <Image
+                src="/images/tentang.jpg"
+                alt="Tentang Bloomerie"
+                fill
+                className="object-cover"
+              />
               <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                <svg viewBox="0 0 200 200" className="w-3/4" fill="none">
-                  {[0,60,120,180,240,300].map((angle, i) => (
-                    <ellipse
-                      key={i}
-                      cx="100"
-                      cy="60"
-                      rx="20"
-                      ry="40"
-                      fill="rgba(196,50,74,0.6)"
-                      transform={`rotate(${angle} 100 100)`}
-                    />
-                  ))}
-                  <circle cx="100" cy="100" r="18" fill="rgba(253,246,240,0.4)" />
-                </svg>
               </div>
               <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,5,8,0.7) 0%, transparent 60%)" }} />
             </div>
@@ -94,15 +87,6 @@ export default function AboutSection() {
 
         {/* Right: Text */}
         <div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.2 }}
-            className="font-body text-[10px] tracking-[0.4em] uppercase text-[var(--crimson-light)] mb-6"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          >
-            ✦ Tentang Bloomerie
-          </motion.p>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -118,9 +102,9 @@ export default function AboutSection() {
           >
             Lebih dari sekadar
             <br />
-            <em style={{ color: "var(--crimson-light)" }}>toko bunga</em>
+            <em style={{ color: "var(--crimson-light)" }}>toko bunga.</em>
             <br />
-            — sebuah karya seni
+            Melainkan sebuah karya seni
           </motion.h2>
 
           <motion.p
@@ -136,7 +120,7 @@ export default function AboutSection() {
           >
             Bloomerie hadir untuk merangkai momen berharga dalam setiap tangkai bunga. 
             Kami mempercayai bahwa keindahan alam dapat menjadi medium paling tulus 
-            untuk mengungkapkan perasaan — dari ucapan selamat, cinta, hingga duka.
+            untuk mengungkapkan perasaan dari ucapan selamat hingga cinta.
           </motion.p>
 
           {/* Feature list */}

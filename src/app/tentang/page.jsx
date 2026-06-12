@@ -1,25 +1,11 @@
 "use client";
 
-/*
-  Halaman Tentang Kami (/tentang)
-  Struktur:
-  - Hero: foto besar + judul menimpa (seperti artikel hero di hi-fi)
-  - Section "Filosofi kami" — teks editorial dua kolom
-  - Stats row
-  - Team section — kartu per orang
-  - CTA strip
-  
-  Interaktif:
-  - Parallax ringan di hero (useScroll + useTransform)
-  - Scroll-triggered reveal tiap section (useInView)
-  - Team card: hover → nama muncul overlay
-*/
-
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Image from "next/image"
 
 // Komponen: animasi reveal saat masuk viewport
 function Reveal({ children, delay = 0, className = "" }) {
@@ -41,10 +27,10 @@ function Reveal({ children, delay = 0, className = "" }) {
 }
 
 const TEAM = [
-  { name: "Aisyah Putri",   role: "Head Florist",         initial: "AP", color: "#E8D8D0" },
-  { name: "Reza Firmansyah", role: "Creative Director",    initial: "RF", color: "#D0D8E8" },
-  { name: "Nadia Santoso",  role: "Customer Experience",   initial: "NS", color: "#D8E8D0" },
-  { name: "Bima Wicaksono", role: "Logistics & Delivery",  initial: "BW", color: "#E8E0D0" },
+  { name: "Aisyah Putri",   role: "Head Florist",         initial: "AP", color: "#E8D8D0", image: "/images/aisyah.jpg" },
+  { name: "Reza Firmansyah", role: "Creative Director",    initial: "RF", color: "#D0D8E8", image: "/images/rezabr.jpg" },
+  { name: "Nadia Santoso",  role: "Customer Experience",   initial: "NS", color: "#D8E8D0", image: "/images/nadia.jpg" },
+  { name: "Bima Wicaksono", role: "Logistics & Delivery",  initial: "BW", color: "#E8E0D0", image: "/images/bima.jpg" },
 ];
 
 export default function TentangPage() {
@@ -66,8 +52,14 @@ export default function TentangPage() {
           style={{ y: heroY }}
           className="absolute inset-0"
         >
-          {/* Ganti div ini dengan <Image src="/about-hero.jpg" fill className="object-cover" /> */}
-          <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #C8B8A8 0%, #A89880 100%)" }}>
+            <Image
+                src="/images/headingbr.jpg"
+                alt="Heading Navbar"
+                fill
+                className="object-cover"
+              />          
+              
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,5,8,0.7) 0%, transparent 60%)" }}>
             {/* Dekorasi sementara */}
             <div className="absolute inset-0 flex items-center justify-center opacity-10">
               <svg viewBox="0 0 300 300" className="w-96" fill="none">
@@ -192,6 +184,8 @@ export default function TentangPage() {
         </Reveal>
 
         {/* Blockquote editorial */}
+
+
         <Reveal delay={0.1} className="mb-24 text-center max-w-2xl mx-auto">
           <p style={{
             fontFamily: "'Instrument Serif', serif",
@@ -243,18 +237,15 @@ export default function TentangPage() {
                   className="relative mb-4"
                   style={{ background: member.color, aspectRatio: "3/4" }}
                 >
-                  {/* Inisial sebagai placeholder */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span style={{
-                      fontFamily: "'Fraunces', serif",
-                      fontVariationSettings: "'opsz' 72",
-                      fontSize: "4rem",
-                      color: "rgba(28,28,26,0.15)",
-                      fontWeight: 400,
-                    }}>
-                      {member.initial}
-                    </span>
-                  </div>
+                    {member.image && (
+  <Image
+    src={member.image}
+    alt={member.name}
+    fill
+    className="object-cover"
+  />
+)}
+
 
                   {/* Hover overlay */}
                   <motion.div
