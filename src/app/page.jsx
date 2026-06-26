@@ -1,25 +1,26 @@
-"use client";
+/*
+  app/page.jsx — Halaman Beranda (/)
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import FeaturedBouquets from "@/components/FeaturedBouquets";
-import AboutSection from "@/components/AboutSection";
-import TestimonialSection from "@/components/TestimonialSection";
-import Footer from "@/components/Footer";
-import CursorGlow from "@/components/CursorGlow";
+  Navbar dan Footer TIDAK ditulis di sini — sudah otomatis terpasang
+  lewat layout.jsx (root layout), jadi semua halaman baru otomatis
+  punya Navbar+Footer tanpa perlu import manual lagi.
 
-export default function Home() {
+  Homepage SELESAI — semua 4 section sudah terpasang:
+  HeroSection, FeaturedProducts, BlogPreview, NewsletterCTA
+*/
+
+import HeroSection from "@/components/home/HeroSection";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import BlogPreview from "@/components/home/BlogPreview";
+import NewsletterCTA from "@/components/home/NewsletterCTA";
+
+export default function HomePage() {
   return (
-    <main className="bg-[#0f0508] min-h-screen overflow-x-hidden">
-      <CursorGlow />
-      <Navbar />
+    <main>
       <HeroSection />
-      <FeaturedBouquets />
-      <AboutSection />
-      <TestimonialSection />
-      <Footer />
+      <FeaturedProducts />
+      <BlogPreview />
+      <NewsletterCTA />
     </main>
   );
 }

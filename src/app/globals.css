@@ -1,90 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
 
-/* ─── CSS Variables (warna brand Bloomerie) ─── */
-@layer base {
-  :root {
-    --crimson: #8B2035;
-    --crimson-light: #A8293F;
-    --ink: #1C1C1A;
-    --ink-mid: #3A3A38;
-    --stone: #6B6560;
-    --stone-light: #9C8E82;
-    --cream: #FAF8F5;
-    --cream-mid: #EDE8E1;
-    --border: #E8E3DC;
-  }
+@theme {
+  /* ── Warna brand, sesuai Figma persis ── */
+  --color-primary: #850E35;
+  --color-primary-light: #A8294F;
+  --color-primary-dark: #5C0924;
 
+  --color-secondary: #5F5E5E;
+  --color-secondary-light: #8A8989;
+  --color-secondary-dark: #3A3939;
+
+  --color-tertiary: #004D30;
+  --color-tertiary-light: #006B43;
+
+  --color-neutral: #F8F9FA;
+  --color-neutral-dark: #E9ECEF;
+
+  --color-ink: #1A1A1A;        /* untuk teks utama, bukan pure black */
+  --color-ink-soft: #4A4A4A;   /* untuk teks sekunder/deskripsi */
+
+  /* ── Font ── */
+  /* var(--font-public-sans) di-generate otomatis oleh next/font di layout.jsx */
+  --font-sans: var(--font-public-sans), "Public Sans", system-ui, sans-serif;
+}
+
+@layer base {
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
-    background: var(--cream);
-    color: var(--ink);
-    /* DM Sans untuk body text — clean, tidak terlalu AI */
-    font-family: 'DM Sans', sans-serif;
+    background: var(--color-neutral);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
-    background: var(--crimson);
-    color: var(--cream);
+    background: var(--color-primary);
+    color: white;
   }
 
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--cream); }
-  ::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 2px; }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-neutral);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-secondary-light);
+    border-radius: 4px;
+  }
 }
 
-/* ─── Utility classes kustom (pelengkap Tailwind) ─── */
 @layer utilities {
-  /* Font helpers */
-  .font-logo {
-    /* Fraunces: optical size font, berkarakter kuat, tidak mainstream */
-    font-family: 'Fraunces', serif;
-    font-variation-settings: 'opsz' 144; /* optical size besar = lebih tegas */
-    font-weight: 400;
+  /* Garis bawah animasi untuk link nav aktif (dipakai di Navbar) */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .link-underline.active::after {
+    transform: scaleX(1);
   }
 
-  .font-serif-accent {
-    /* Instrument Serif: untuk italic aksen, lebih hidup dari Cormorant */
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
+  /* Container max-width konsisten di semua section */
+  .container-bloomerie {
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
   }
-
-  .font-body {
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  /* Warna */
-  .text-crimson { color: var(--crimson); }
-  .text-stone { color: var(--stone); }
-  .text-cream { color: var(--cream); }
-  .bg-crimson { background-color: var(--crimson); }
-  .bg-cream { background-color: var(--cream); }
-  .border-brand { border-color: var(--border); }
-}
-
-/* ─── Marquee animation (dipakai di MarqueeStrip.jsx) ─── */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.animate-marquee {
-  animation: marquee 22s linear infinite;
-}
-
-/* ─── Grain overlay (opsional, dipakai di hero) ─── */
-.grain-overlay::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.3;
 }
