@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 
 export default function KonfirmasiPage() {
   return (
-    <div className="container-bloomerie py-20 flex flex-col items-center text-center">
+    <div className="container-bloomerie min-h-[calc(100vh-200px)] py-10 flex flex-col items-center justify-center text-center">
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}

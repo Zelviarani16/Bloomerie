@@ -36,10 +36,10 @@ export default function CheckoutClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (isLoaded && items.length === 0) {
+    if (isLoaded && items.length === 0 && !isSubmitting) {
       router.replace("/keranjang");
     }
-  }, [isLoaded, items, router]);
+  }, [isLoaded, items, router, isSubmitting]);
 
   const selectedShipping = SHIPPING_OPTIONS.find((s) => s.id === shippingMethodId);
 

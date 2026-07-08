@@ -2,11 +2,10 @@
 
 /*
   Navbar.jsx
-  Sesuai design Figma:
   - Logo "Bloomerie" kiri, warna primary, font bold
   - Menu tengah: Beranda, Katalog, Blog, Tentang Kami
     -> link aktif ada underline merah di bawahnya
-  - Kanan: ikon user, ikon wishlist (heart), separator tipis, button Keranjang solid maroon
+  - Kanan: ikon user, separator tipis, button Keranjang solid maroon
 
   usePathname dipakai untuk tau halaman mana yang aktif sekarang,
   supaya underline otomatis pindah sesuai URL yang dibuka.
@@ -16,20 +15,33 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 
 const NAV_LINKS = [
   { label: "Beranda", href: "/" },
   { label: "Katalog", href: "/katalog" },
   { label: "Blog", href: "/blog" },
-  { label: "Tentang Kami", href: "/tentang-kami" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Dummy cart count — nanti diganti dari state/context cart yang sesungguhnya
-  const cartCount = 0;
+  // Auth state
+  const { user } = useAuth();
+
+  // totalItems diambil dari CartContext — otomatis update real-time
+  const { totalItems } = useCart();
+
+  // Halaman auth (login/register) dan semua halaman admin punya
+  // header sendiri yang beda total dari Navbar publik ini (lihat
+  // Figma: Login pakai header simpel, Admin pakai sidebar). Jadi
+  // Navbar publik ini disembunyikan total di halaman-halaman itu.
+  const hideNavbarRoutes = ["/login", "/register", "/lupa-password"];
+  const isHidden = hideNavbarRoutes.includes(pathname) || pathname.startsWith("/admin");
+
+  if (isHidden) return null;
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b" style={{ borderColor: "var(--color-neutral-dark)" }}>
@@ -72,18 +84,26 @@ export default function Navbar() {
 
         {/* ── Kanan: ikon + tombol (desktop) ── */}
         <div className="hidden md:flex items-center gap-5">
-          <Link href="/login" aria-label="Akun" className="hover:opacity-70 transition-opacity">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink)" strokeWidth="1.6">
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-            </svg>
-          </Link>
-
-          <Link href="/wishlist" aria-label="Wishlist" className="hover:opacity-70 transition-opacity">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink)" strokeWidth="1.6">
-              <path d="M12 21s-7.5-4.6-10-9.3C0.3 8.4 2 4.8 5.4 4.2c2-.3 3.9.7 4.6 2.4.7-1.7 2.6-2.7 4.6-2.4 3.4.6 5.1 4.2 3.4 7.5C19.5 16.4 12 21 12 21z" />
-            </svg>
-          </Link>
+          {user ? (
+            <>
+              <Link href="/profile" aria-label="Akun" className="hover:opacity-70 transition-opacity">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink)" strokeWidth="1.6">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+                </svg>
+              </Link>
+              <span className="text-sm" style={{ color: "var(--color-ink-soft)" }}>{user.nama}</span>
+            </>
+          ) : (
+            <>
+              <Link href="/login" className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "var(--color-ink)" }}>
+                Masuk
+              </Link>
+              <Link href="/register" className="text-sm font-semibold px-4 py-2 rounded text-white" style={{ background: "var(--color-primary)" }}>
+                Daftar
+              </Link>
+            </>
+          )}
 
           <div className="w-px h-6" style={{ background: "var(--color-neutral-dark)" }} />
 
@@ -100,12 +120,12 @@ export default function Navbar() {
                 <path d="M1 1h4l2.7 13.4a2 2 0 002 1.6h9.7a2 2 0 002-1.6L23 6H6" />
               </svg>
               Keranjang
-              {cartCount > 0 && (
+              {totalItems > 0 && (
                 <span
                   className="absolute -top-2 -right-2 w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center"
                   style={{ background: "var(--color-tertiary)", color: "white" }}
                 >
-                  {cartCount}
+                  {totalItems}
                 </span>
               )}
             </motion.button>
@@ -147,16 +167,33 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <div className="flex items-center gap-4 pt-2">
-                <Link href="/login" className="text-sm" style={{ color: "var(--color-ink)" }}>Akun</Link>
-                <Link href="/wishlist" className="text-sm" style={{ color: "var(--color-ink)" }}>Wishlist</Link>
+              <div className="flex flex-col gap-3 pt-2 border-t" style={{ borderColor: "var(--color-neutral)" }}>
+                {user ? (
+                  <>
+                    <Link href="/profile" className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>
+                      {user.nama}
+                    </Link>
+                    <Link href="/profile" className="text-sm" style={{ color: "var(--color-secondary)" }}>
+                      Profil Saya
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/login" className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>
+                      Masuk
+                    </Link>
+                    <Link href="/register" className="text-sm font-medium" style={{ color: "var(--color-primary)" }}>
+                      Daftar
+                    </Link>
+                  </>
+                )}
               </div>
               <Link href="/keranjang">
                 <button
                   className="w-full py-2.5 text-xs font-semibold tracking-[0.08em] uppercase rounded text-white"
                   style={{ background: "var(--color-primary)" }}
                 >
-                  Keranjang ({cartCount})
+                  Keranjang ({totalItems})
                 </button>
               </Link>
             </div>

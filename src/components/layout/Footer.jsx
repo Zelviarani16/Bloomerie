@@ -1,3 +1,5 @@
+"use client";
+
 /*
   Footer.jsx
   Sesuai design Figma:
@@ -7,11 +9,13 @@
   - Ikon share/email kanan
   - Baris bawah: copyright
 
-  Tidak butuh "use client" karena tidak ada interaktivitas/animasi
-  di komponen ini — render statis saja lebih ringan.
+  Sekarang pakai "use client" (sebelumnya Server Component statis)
+  karena perlu usePathname() untuk sembunyikan Footer ini di halaman
+  login/register/admin — sama seperti logic di Navbar.jsx.
 */
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const FOOTER_LINKS = [
   { label: "Kebijakan Privasi", href: "/kebijakan-privasi" },
@@ -20,6 +24,12 @@ const FOOTER_LINKS = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const hideFooterRoutes = ["/login", "/register", "/lupa-password"];
+  const isHidden = hideFooterRoutes.includes(pathname) || pathname.startsWith("/admin");
+
+  if (isHidden) return null;
   return (
     <footer style={{ background: "var(--color-neutral-dark)" }}>
       <div className="container-bloomerie py-8">

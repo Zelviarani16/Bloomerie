@@ -99,20 +99,6 @@ export default function HeroSection() {
               </motion.button>
             </Link>
 
-            <Link href="/tentang-kami">
-              <motion.button
-                whileHover={{ scale: 1.03, background: "var(--color-primary)", color: "#fff" }}
-                whileTap={{ scale: 0.97 }}
-                className="px-7 py-3 text-xs font-semibold tracking-[0.1em] uppercase rounded border transition-colors"
-                style={{
-                  borderColor: "var(--color-primary)",
-                  color: "var(--color-primary)",
-                  background: "transparent",
-                }}
-              >
-                Pelajari Lebih Lanjut
-              </motion.button>
-            </Link>
           </motion.div>
         </div>
 
@@ -130,7 +116,7 @@ export default function HeroSection() {
               src="/images/hero-bouquet.jpg"
             */}
             <Image
-              src="/images/hero-bouquet.jpg"
+              src="/images/hero-bouquet.png"
               alt="Buket bunga mawar pink dan lily putih"
               fill
               priority
