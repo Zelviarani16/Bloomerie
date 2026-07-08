@@ -264,7 +264,7 @@ export default function RegisterClient() {
         <div className="container-bloomerie flex flex-col sm:flex-row items-center justify-between gap-3">
           <div>
             <p className="text-sm font-bold" style={{ color: "var(--color-primary)" }}>Bloomerie</p>
-            <p className="text-xs" style={{ color: "var(--color-secondary)" }}>© 2024 Bloomerie. Keindahan dalam Setiap Kelopak.</p>
+            <p className="text-xs" style={{ color: "var(--color-secondary)" }}>© 2026 Bloomerie. Keindahan dalam Setiap Kelopak.</p>
           </div>
           <div className="flex items-center gap-5">
             <Link href="/kebijakan-privasi" className="text-xs" style={{ color: "var(--color-ink-soft)" }}>Kebijakan Privasi</Link>

@@ -41,7 +41,7 @@ export default function Footer() {
               Bloomerie
             </p>
             <p className="text-xs mt-1" style={{ color: "var(--color-secondary)" }}>
-              © 2024 Bloomerie. Keindahan dalam Setiap Kelopak.
+              © 2026 Bloomerie. Keindahan dalam Setiap Kelopak.
             </p>
           </div>
 

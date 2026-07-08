@@ -1,13 +1,13 @@
 /*
-  app/admin/inventori/page.jsx — Halaman Kelola Produk (/admin/inventori)
+  app/admin/pesanan/page.jsx — Halaman Kelola Transaksi (/admin/pesanan)
 */
 
-import InventoryClient from "@/components/admin/inventori/InventoryClient";
+import PesananClient from "@/components/admin/pesanan/PesananClient";
 
 export const metadata = {
-  title: "Kelola Produk — Bloomerie Admin",
+  title: "Kelola Transaksi — Bloomerie Admin",
 };
 
-export default function InventoriPage() {
-  return <InventoryClient />;
+export default function PesananPage() {
+  return <PesananClient />;
 }

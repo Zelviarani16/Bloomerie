@@ -15,7 +15,7 @@ export default function InventoryStats({ stats }) {
     { label: "Total Produk", value: stats.totalProduk, color: "var(--color-ink)" },
     { label: "Stok Rendah", value: stats.stokRendah, color: "var(--color-primary)" },
     { label: "Kategori", value: stats.kategori, color: "var(--color-ink)" },
-    { label: "Produk Aktif", value: stats.produkAktif, color: "var(--color-tertiary)" },
+    { label: "Produk Aktif", value: stats.produkAKTIF, color: "var(--color-tertiary)" },
   ];
 
   return (
