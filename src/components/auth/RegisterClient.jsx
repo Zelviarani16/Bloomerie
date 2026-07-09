@@ -3,17 +3,19 @@
 /*
   RegisterClient.jsx
   Halaman Register untuk user baru
+  Responsive dengan hamburger menu untuk mobile
 */
 
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 
 export default function RegisterClient() {
   const router = useRouter();
   const { register } = useAuth();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     nama: "",
@@ -33,7 +35,6 @@ export default function RegisterClient() {
     e.preventDefault();
     setError("");
 
-    // Validasi
     if (!formData.nama || !formData.email || !formData.password) {
       setError("Semua field harus diisi");
       return;
@@ -51,14 +52,12 @@ export default function RegisterClient() {
 
     setIsSubmitting(true);
 
-    // Register user baru
     const result = register(formData.nama, formData.email, formData.password);
 
     setTimeout(() => {
       setIsSubmitting(false);
 
       if (result.success) {
-        // Arahkan ke halaman login
         router.push("/login");
       } else {
         setError(result.error);
@@ -74,7 +73,9 @@ export default function RegisterClient() {
           <Link href="/" className="text-xl font-bold" style={{ color: "var(--color-primary)" }}>
             Bloomerie
           </Link>
-          <div className="flex items-center gap-6">
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-6">
             <Link href="/" className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>
               Beranda
             </Link>
@@ -89,18 +90,60 @@ export default function RegisterClient() {
               Bantuan
             </Link>
           </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden flex flex-col gap-1.5 p-2"
+            aria-label="Menu"
+          >
+            <motion.span animate={menuOpen ? { rotate: 45, y: 6 } : {}} className="block w-6 h-[2px]" style={{ background: "var(--color-ink)" }} />
+            <motion.span animate={menuOpen ? { opacity: 0 } : { opacity: 1 }} className="block w-6 h-[2px]" style={{ background: "var(--color-ink)" }} />
+            <motion.span animate={menuOpen ? { rotate: -45, y: -6 } : {}} className="block w-6 h-[2px]" style={{ background: "var(--color-ink)" }} />
+          </button>
         </div>
+
+        {/* Mobile menu dropdown */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="md:hidden overflow-hidden border-t"
+              style={{ borderColor: "var(--color-neutral-dark)" }}
+            >
+              <div className="flex flex-col px-6 py-4 gap-3">
+                <Link href="/" onClick={() => setMenuOpen(false)} className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>
+                  Beranda
+                </Link>
+                <Link href="/katalog" onClick={() => setMenuOpen(false)} className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>
+                  Katalog
+                </Link>
+                <Link href="/blog" onClick={() => setMenuOpen(false)} className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>
+                  Blog
+                </Link>
+                <div className="border-t pt-3 mt-1" style={{ borderColor: "var(--color-neutral)" }}>
+                  <Link href="/bantuan" onClick={() => setMenuOpen(false)} className="text-sm" style={{ color: "var(--color-ink-soft)" }}>
+                    Bantuan
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* ── Konten utama ── */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-16">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8 w-full max-w-md"
         >
-          <h1 className="text-3xl font-bold mb-2" style={{ color: "var(--color-ink)" }}>
+          <h1 className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: "var(--color-ink)" }}>
             Buat Akun Baru
           </h1>
           <p className="text-sm" style={{ color: "var(--color-ink-soft)" }}>
@@ -113,7 +156,7 @@ export default function RegisterClient() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="w-full max-w-md rounded-lg p-8 shadow-sm border"
+          className="w-full max-w-md rounded-lg p-6 sm:p-8 shadow-sm border"
           style={{ borderColor: "var(--color-neutral-dark)" }}
         >
           <form onSubmit={handleSubmit}>
@@ -260,13 +303,13 @@ export default function RegisterClient() {
       </div>
 
       {/* ── Footer simpel ── */}
-      <footer className="py-6" style={{ background: "var(--color-neutral-dark)" }}>
-        <div className="container-bloomerie flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div>
+      <footer className="py-6 px-4" style={{ background: "var(--color-neutral-dark)" }}>
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="text-center sm:text-left">
             <p className="text-sm font-bold" style={{ color: "var(--color-primary)" }}>Bloomerie</p>
             <p className="text-xs" style={{ color: "var(--color-secondary)" }}>© 2026 Bloomerie. Keindahan dalam Setiap Kelopak.</p>
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3 sm:gap-5 flex-wrap justify-center">
             <Link href="/kebijakan-privasi" className="text-xs" style={{ color: "var(--color-ink-soft)" }}>Kebijakan Privasi</Link>
             <Link href="/syarat-ketentuan" className="text-xs" style={{ color: "var(--color-ink-soft)" }}>Syarat & Ketentuan</Link>
             <Link href="/hubungi-kami" className="text-xs" style={{ color: "var(--color-ink-soft)" }}>Hubungi Kami</Link>

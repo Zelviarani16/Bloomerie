@@ -2,17 +2,12 @@
 
 /*
   AdminSidebar.jsx
-  Sesuai Figma: sidebar kiri fixed, logo "Bloomerie Admin" + role
-  "Manajer Toko" di atas, menu utama (Dashboard/Inventori/Pesanan/
-  Pelanggan/Artikel/Laporan), lalu di bagian bawah ada Pengaturan
-  dan Keluar terpisah dengan garis.
-
-  Dipakai di SEMUA halaman admin lewat AdminLayout.jsx — sama seperti
-  Navbar dipakai di semua halaman user lewat root layout.jsx.
+  Responsive sidebar dengan hamburger menu untuk mobile
 */
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 
 const MENU_ITEMS = [
@@ -75,7 +70,7 @@ const MENU_ITEMS = [
   },
 ];
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ isOpen, onClose }) {
   const pathname = usePathname();
   const router = useRouter();
   const { user, logout } = useAuth();
@@ -88,88 +83,107 @@ export default function AdminSidebar() {
   };
 
   return (
-    <aside
-      className="w-64 flex-shrink-0 h-screen sticky top-0 flex flex-col border-r"
-      style={{ borderColor: "var(--color-neutral-dark)", background: "white" }}
-    >
-      {/* Logo + user info */}
-      <div className="p-6">
-        <div className="flex items-center gap-3 mb-3">
-          <div
-            className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
-            style={{ background: "var(--color-neutral)", color: "var(--color-primary)" }}
+    <>
+      {/* Overlay untuk mobile */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Sidebar */}
+      <motion.aside
+        initial={false}
+        animate={{ x: isOpen ? 0 : -280 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="fixed lg:sticky top-0 left-0 z-50 w-[280px] flex-shrink-0 h-screen flex flex-col border-r lg:translate-x-0"
+        style={{ borderColor: "var(--color-neutral-dark)", background: "white" }}
+      >
+        {/* Logo + user info */}
+        <div className="p-6">
+          <div className="flex items-center gap-3 mb-3">
+            <div
+              className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
+              style={{ background: "var(--color-neutral)", color: "var(--color-primary)" }}
+            >
+              {user?.nama?.charAt(0).toUpperCase() || "A"}
+            </div>
+            <div>
+              <h1 className="text-base font-bold" style={{ color: "var(--color-primary)" }}>
+                Bloomerie Admin
+              </h1>
+              <p className="text-xs" style={{ color: "var(--color-secondary)" }}>
+                {user?.nama || "Admin"}
+              </p>
+            </div>
+          </div>
+          <span
+            className="inline-block px-2 py-0.5 rounded text-xs font-semibold"
+            style={{ background: "var(--color-primary)", color: "white" }}
           >
-            {user?.nama?.charAt(0).toUpperCase() || "A"}
-          </div>
-          <div>
-            <h1 className="text-base font-bold" style={{ color: "var(--color-primary)" }}>
-              Bloomerie Admin
-            </h1>
-            <p className="text-xs" style={{ color: "var(--color-secondary)" }}>
-              {user?.nama || "Admin"}
-            </p>
-          </div>
+            Manajer Toko
+          </span>
         </div>
-        <span
-          className="inline-block px-2 py-0.5 rounded text-xs font-semibold"
-          style={{ background: "var(--color-primary)", color: "white" }}
-        >
-          Manajer Toko
-        </span>
-      </div>
 
-      {/* Menu utama */}
-      <nav className="flex-1 px-4">
-        <ul className="flex flex-col gap-1">
-          {MENU_ITEMS.map((item) => {
-            // startsWith supaya sub-halaman (misal /admin/pesanan/123)
-            // tetap menganggap menu "Pesanan" aktif
-            const isActive = pathname.startsWith(item.href);
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium transition-colors"
-                  style={{
-                    background: isActive ? "var(--color-neutral)" : "transparent",
-                    color: isActive ? "var(--color-primary)" : "var(--color-ink-soft)",
-                  }}
-                >
-                  {item.icon}
-                  {item.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+        {/* Menu utama */}
+        <nav className="flex-1 px-4 overflow-y-auto">
+          <ul className="flex flex-col gap-1">
+            {MENU_ITEMS.map((item) => {
+              const isActive = pathname.startsWith(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={onClose}
+                    className="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium transition-colors"
+                    style={{
+                      background: isActive ? "var(--color-neutral)" : "transparent",
+                      color: isActive ? "var(--color-primary)" : "var(--color-ink-soft)",
+                    }}
+                  >
+                    {item.icon}
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
-      {/* Pengaturan + Keluar */}
-      <div className="p-4 border-t" style={{ borderColor: "var(--color-neutral-dark)" }}>
-        <Link
-          href="/admin/pengaturan"
-          className="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium"
-          style={{ color: "var(--color-ink-soft)" }}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 005 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 005 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 5a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09A1.65 1.65 0 0015 5a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019 9c.2.5.6.9 1.51 1H21a2 2 0 110 4h-.09c-.91.1-1.31.5-1.51 1z" />
-          </svg>
-          Pengaturan
-        </Link>
-        <button
-          onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded text-sm font-medium"
-          style={{ color: "var(--color-primary)" }}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
-            <polyline points="16 17 21 12 16 7" />
-            <line x1="21" y1="12" x2="9" y2="12" />
-          </svg>
-          Keluar
-        </button>
-      </div>
-    </aside>
+        {/* Pengaturan + Keluar */}
+        <div className="p-4 border-t" style={{ borderColor: "var(--color-neutral-dark)" }}>
+          <Link
+            href="/admin/pengaturan"
+            onClick={onClose}
+            className="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium"
+            style={{ color: "var(--color-ink-soft)" }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="3" />
+              <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 005 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 005 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 5a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09A1.65 1.65 0 0015 5a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019 9c.2.5.6.9 1.51 1H21a2 2 0 110 4h-.09c-.91.1-1.31.5-1.51 1z" />
+            </svg>
+            Pengaturan
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded text-sm font-medium"
+            style={{ color: "var(--color-primary)" }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            Keluar
+          </button>
+        </div>
+      </motion.aside>
+    </>
   );
 }
