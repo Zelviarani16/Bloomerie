@@ -2,7 +2,7 @@
 
 /*
   ProductGallery.jsx
-  Sesuai Figma: foto besar di atas, 4 thumbnail kecil di bawahnya.
+  foto besar di atas, 4 thumbnail kecil di bawahnya.
   Klik thumbnail -> foto besar berganti (state lokal, simple).
 */
 

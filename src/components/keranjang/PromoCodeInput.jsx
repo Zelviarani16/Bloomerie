@@ -2,7 +2,7 @@
 
 /*
   PromoCodeInput.jsx
-  Box "Punya kode promo?" di bawah tabel keranjang sesuai Figma.
+  Box "Punya kode promo?" di bawah tabel keranjang
   Logic validasi kode promo masih dummy (belum ada backend) — kode
   "BLOOM10" dianggap valid sebagai contoh, sisanya invalid.
 */

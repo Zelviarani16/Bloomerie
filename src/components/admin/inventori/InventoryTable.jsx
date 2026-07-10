@@ -2,7 +2,7 @@
 
 /*
   InventoryTable.jsx
-  Sesuai Figma: tabel dengan kolom ID, Nama Produk (foto kecil+nama),
+  tabel dengan kolom ID, Nama Produk (foto kecil+nama),
   Kategori (badge pill abu), Harga, Stok (merah kalau <= threshold),
   Status (dot + label), dan menu titik tiga di akhir baris.
 */

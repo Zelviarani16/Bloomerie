@@ -2,7 +2,7 @@
 
 /*
   InventoryToolbar.jsx
-  Sesuai Figma: search input full-width kiri, button "Filter" dan
+  search input full-width kiri, button "Filter" dan
   "Ekspor" kanan (outline, ada icon).
 */
 

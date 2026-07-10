@@ -3,10 +3,7 @@
 /*
   app/checkout/konfirmasi/page.jsx
   Halaman sederhana yang tampil setelah submit checkout berhasil
-  (dummy, belum ada order ID asli dari backend). Tidak ada di
-  screenshot Figma yang dikirim, tapi dibutuhkan secara fungsional
-  supaya alur checkout punya "akhir cerita" yang jelas, bukan
-  menggantung begitu saja.
+  (dummy, belum ada order ID asli dari backend). 
 */
 
 import Link from "next/link";

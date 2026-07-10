@@ -2,7 +2,7 @@
 
 /*
   OrderTabs.jsx
-  Sesuai Figma: 4 pill button (Semua Pesanan, Menunggu, Dikirim, Selesai).
+  4 pill button (Semua Pesanan, Menunggu, Dikirim, Selesai).
   Yang aktif solid maroon, sisanya outline tipis abu.
 */
 

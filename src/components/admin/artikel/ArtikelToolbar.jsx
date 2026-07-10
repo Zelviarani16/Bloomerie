@@ -3,7 +3,7 @@
 /*
   ArtikelToolbar.jsx
   Search bar, filter dropdowns, action buttons, dan button tambah artikel baru
-  Sesuai Figma: search, filter kategori, filter status, icon, button merah "Tambah Artikel Baru"
+  search, filter kategori, filter status, icon, button merah "Tambah Artikel Baru"
 */
 
 import { useState } from "react";

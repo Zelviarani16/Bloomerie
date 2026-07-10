@@ -2,7 +2,7 @@
 
 /*
   ProductInfo.jsx
-  Bagian kanan halaman detail produk. Sesuai Figma:
+  Bagian kanan halaman detail produk.
   - Badge "Terlaris" kecil
   - Nama produk (besar, bold)
   - Harga (besar, primary color) — berubah sesuai ukuran yang dipilih

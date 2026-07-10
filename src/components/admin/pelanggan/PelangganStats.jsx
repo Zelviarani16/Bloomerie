@@ -2,7 +2,7 @@
 
 /*
   PelangganStats.jsx
-  Sesuai Figma: 3 card statistik di atas tabel
+  3 card statistik di atas tabel
   - Total Pengguna: 2,840
   - User Baru (Bulan Ini): +124
   - Pengguna Disuspend: 12

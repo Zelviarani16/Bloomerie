@@ -2,7 +2,6 @@
   src/data/admin-artikel.js
   Data dummy untuk halaman Kelola Artikel dan Arsip Artikel (Admin)
 
-  Sesuai Figma:
   - Kelola Artikel: Tabel dengan kolom Judul, Status, Kategori, Penulis, Tanggal, Aksi
   - Arsip Artikel: Tabel dengan kolom Judul, Tanggal Diarsipkan, Aksi
   - Status: Diterbitkan, Draft

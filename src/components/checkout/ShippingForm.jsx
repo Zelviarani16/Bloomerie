@@ -2,7 +2,7 @@
 
 /*
   ShippingForm.jsx
-  Sesuai Figma: card putih dengan ikon truck + "Informasi Pengiriman",
+  card putih dengan ikon truck + "Informasi Pengiriman",
   grid 2 kolom (Nama Depan/Belakang), full-width (Nomor Telepon,
   Alamat Lengkap sebagai textarea), grid 2 kolom lagi (Kota, Kode Pos).
 

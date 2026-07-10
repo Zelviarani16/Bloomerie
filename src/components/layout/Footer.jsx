@@ -2,7 +2,6 @@
 
 /*
   Footer.jsx
-  Sesuai design Figma:
   - Background neutral-dark (sedikit lebih gelap dari background utama)
   - Kiri: nama brand + tagline singkat
   - Tengah/kanan: link Kebijakan Privasi, Syarat & Ketentuan, Hubungi Kami

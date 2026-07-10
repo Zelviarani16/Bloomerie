@@ -6,9 +6,9 @@
   di halaman Katalog. Supaya satu komponen bisa dipakai di 2 tempat
   yang tampilannya sedikit beda, ditambahkan prop "variant":
 
-  - variant="compact" (default)  -> dipakai di Beranda, sesuai Figma
+  - variant="compact" (default)  -> dipakai di Beranda
     homepage: nama + tombol pill sejajar, harga di bawah, TANPA rating
-  - variant="catalog"            -> dipakai di /katalog, sesuai Figma
+  - variant="catalog"            -> dipakai di /katalog
     katalog: nama lalu deskripsi di bawahnya, harga + rating sejajar
     di baris bawah, TANPA tombol pill (karena seluruh card bisa diklik)
 */

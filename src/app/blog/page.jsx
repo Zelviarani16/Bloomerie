@@ -2,7 +2,6 @@
   app/blog/page.jsx
   Halaman Blog untuk User
 
-  Sesuai Figma:
   - Header: "Blog" + subtitle
   - Featured section (sorotan utama)
   - Category filter buttons

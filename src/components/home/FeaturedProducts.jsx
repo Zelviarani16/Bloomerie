@@ -3,7 +3,7 @@
 /*
   FeaturedProducts.jsx
   Section "Produk Pilihan" di Beranda.
-  Sesuai design Figma: heading kiri + subtext, link "Lihat Semua ->"
+  heading kiri + subtext, link "Lihat Semua ->"
   kanan (sejajar heading), grid 3 kolom card produk di bawahnya.
 
   Data produk ditarik dari data/products.js, difilter yang featured:true

@@ -2,7 +2,7 @@
 
 /*
   OrderCard.jsx
-  Sesuai Figma: card putih horizontal, foto kiri, lalu kolom
+  card putih horizontal, foto kiri, lalu kolom
   No.Pesanan, Tanggal, Item, Total, Status badge, button kanan
   ("Pesan Lagi" solid kalau selesai, "Detail" outline kalau belum).
 */

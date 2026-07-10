@@ -1,6 +1,6 @@
 /*
   ProductDetailSection.jsx
-  Sesuai Figma: heading "Detail Produk & Perawatan", checklist 3 poin
+  heading "Detail Produk & Perawatan", checklist 3 poin
   dengan ikon centang, lalu box abu-abu "Tips Perawatan".
   Statis, tidak butuh interaktivitas, jadi tidak perlu "use client".
 */

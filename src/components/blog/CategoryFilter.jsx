@@ -2,7 +2,7 @@
 
 /*
   CategoryFilter.jsx
-  Tombol filter kategori artikel sesuai Figma
+  Tombol filter kategori artikel
   - Semua Artikel, Tips Perawatan, Inspirasi Buket, Gaya Hidup, Event & Pernikahan
   - Tombol aktif ganti warna background
 */

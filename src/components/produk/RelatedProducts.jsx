@@ -2,7 +2,7 @@
 
 /*
   RelatedProducts.jsx
-  Sesuai Figma: heading "Mungkin Anda Juga Suka" + link "Lihat Semua",
+  heading "Mungkin Anda Juga Suka" + link "Lihat Semua",
   grid 4 kolom produk. Pakai ProductCard variant="compact" yang sudah
   ada (sama seperti di Homepage) supaya konsisten tampilannya.
 */

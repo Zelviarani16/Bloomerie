@@ -2,14 +2,12 @@
 
 /*
   RevenueChart.jsx
-  Sesuai Figma: bar chart 7 hari, tiap bar punya 2 layer warna
+  bar chart 7 hari, tiap bar punya 2 layer warna
   (pucat = total/target, gelap = value aktual), bar hari "Sab" di
-  contoh Figma di-highlight beda warna (lebih gelap dari yang lain).
+  contoh di-highlight beda warna (lebih gelap dari yang lain).
 
   Dibuat manual dengan div+CSS (bukan library chart) karena datanya
-  simpel dan ini kasus paling ringan untuk dikontrol stylingnya persis
-  sesuai Figma — library chart biasanya lebih cocok untuk data dinamis
-  yang kompleks.
+  simpel
 */
 
 import { motion } from "framer-motion";

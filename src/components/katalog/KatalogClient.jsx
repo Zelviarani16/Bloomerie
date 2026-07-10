@@ -37,7 +37,7 @@ export default function KatalogClient() {
 
   // ── State filter yang SUDAH di-apply (yang benar-benar dipakai untuk filter produk) ──
   // Dipisah dari state draft di atas supaya perubahan slider/checkbox tidak langsung
-  // mem-filter produk — user harus klik "Apply Filters" dulu, sesuai tombol di Figma.
+  // mem-filter produk — user harus klik "Apply Filters" dulu
   const [appliedFilters, setAppliedFilters] = useState({
     categories: [],
     maxPrice: 500000,

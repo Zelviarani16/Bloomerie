@@ -2,7 +2,6 @@
   app/admin/artikel/arsip/page.jsx
   Halaman Arsip Artikel untuk Admin
 
-  Sesuai Figma:
   - Breadcrumb: Admin / Kelola Artikel / Arsip Artikel
   - Header: "Arsip Artikel" + subtitle
   - 3 Stat Cards: Total Arsip, Bulan Ini, Penyimpanan

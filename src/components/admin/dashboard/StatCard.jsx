@@ -2,7 +2,7 @@
 
 /*
   StatCard.jsx
-  Sesuai Figma: card putih, icon kecil di kotak pink lembut, persentase
+  card putih, icon kecil di kotak pink lembut, persentase
   growth hijau di kanan atas (opsional), label uppercase kecil, angka
   besar bold, subtext kecil di bawah.
 */

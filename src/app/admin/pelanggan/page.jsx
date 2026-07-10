@@ -2,7 +2,7 @@
   app/admin/pelanggan/page.jsx
   Halaman Kelola Pelanggan untuk Admin
 
-  Sesuai Figma:
+
   - Header: "Kelola Pengguna" + subtitle deskripsi
   - 3 Stat Cards: Total Pengguna, User Baru, Pengguna Disuspend
   - Search bar + dropdown status + filter + download icons

@@ -2,7 +2,7 @@
 
 /*
   CartItemRow.jsx
-  Satu baris produk di tabel Keranjang. Sesuai Figma:
+  Satu baris produk di tabel Keranjang.
   foto kecil + nama + varian (kiri), harga satuan, quantity stepper,
   subtotal (harga x quantity), link "Hapus" di bawah nama.
 */

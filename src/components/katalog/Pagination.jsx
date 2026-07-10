@@ -2,7 +2,7 @@
 
 /*
   Pagination.jsx
-  Sesuai design Figma: tombol bulat dengan angka, yang aktif solid
+  tombol bulat dengan angka, yang aktif solid
   maroon, tombol prev/next (< >) di kiri-kanan.
 */
 

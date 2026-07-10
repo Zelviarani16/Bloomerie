@@ -2,7 +2,7 @@
 
 /*
   CategoryPerformance.jsx
-  Sesuai Figma: card kanan dashboard, list kategori dengan progress
+  card kanan dashboard, list kategori dengan progress
   bar tipis di bawah tiap nama, persentase di kanan, link "Lihat
   Detail Kategori" di bawah list.
 */

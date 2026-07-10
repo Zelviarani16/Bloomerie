@@ -2,7 +2,6 @@
   src/data/admin-pelanggan.js
   Data dummy untuk halaman Kelola Pelanggan (Admin)
 
-  Sesuai Figma:
   - Tabel dengan kolom: Nama Pelanggan, Email, Tanggal Bergabung, Status, Aksi
   - 3 statistik: Total Pengguna, User Baru (Bulan Ini), Pengguna Disuspend
   - Status: AKTIF, SUSPEN

@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Warna brand, sesuai Figma persis ── */
   --color-primary: #850E35;
   --color-primary-light: #A8294F;
   --color-primary-dark: #5C0924;

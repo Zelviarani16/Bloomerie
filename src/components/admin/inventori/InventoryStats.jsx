@@ -2,7 +2,7 @@
 
 /*
   InventoryStats.jsx
-  Sesuai Figma: 4 card simpel tanpa icon (beda dari StatCard di
+  4 card simpel tanpa icon (beda dari StatCard di
   dashboard yang ada icon+growth%), cuma label kecil uppercase +
   angka besar. Angka "Stok Rendah" diberi warna merah karena itu
   butuh perhatian admin.

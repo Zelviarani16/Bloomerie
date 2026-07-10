@@ -2,7 +2,7 @@
 
 /*
   FeaturedSection.jsx
-  Sorotan utama / featured article sesuai Figma
+  Sorotan utama / featured article
   - Gambar besar di kiri
   - Label "SOROTAN UTAMA" / "FEATURED"
   - Judul besar + excerpt + tanggal + tombol "BACA SELENGKAPNYA"

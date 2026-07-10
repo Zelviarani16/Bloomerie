@@ -2,7 +2,7 @@
 
 /*
   PelangganToolbar.jsx
-  Sesuai Figma: search bar, dropdown filter status, icon filter, icon download
+  search bar, dropdown filter status, icon filter, icon download
 */
 
 import { useState } from "react";

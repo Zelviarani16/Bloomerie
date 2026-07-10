@@ -3,7 +3,7 @@
   Dummy data untuk halaman Kelola Transaksi. Beda dari data/orders.js
   (riwayat transaksi milik user) — di sini ada field "proofImage"
   (bukti bayar) dan "verified" yang menentukan jenis aksi yang
-  ditampilkan di kolom Aksi Verifikasi (lihat Figma: tombol beda-beda
+  ditampilkan di kolom Aksi Verifikasi (tombol beda-beda
   tergantung status — pending butuh approve/reject, diproses butuh
   "Kirim Paket", dikirim cuma bisa "Lacak Resi").
 */

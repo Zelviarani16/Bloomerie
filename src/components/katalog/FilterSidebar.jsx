@@ -2,7 +2,6 @@
 
 /*
   FilterSidebar.jsx
-  Sesuai design Figma halaman Katalog:
   - "Filters" heading
   - Kategori: checkbox list
   - Rentang Harga: slider + label angka kiri-kanan

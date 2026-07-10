@@ -2,7 +2,7 @@
 
 /*
   ShippingMethod.jsx
-  Sesuai Figma: card dengan 3 pilihan radio (Standar, Ekspres, Same Day),
+ ard dengan 3 pilihan radio (Standar, Ekspres, Same Day),
   tiap pilihan ada label + estimasi waktu di kiri, harga di kanan.
   Yang terpilih ada border + dot merah penuh.
 */

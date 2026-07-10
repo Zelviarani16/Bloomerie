@@ -2,7 +2,6 @@
   data/articles.js
   Dummy data artikel blog untuk halaman /blog user
 
-  Sesuai Figma:
   - Featured article (sorotan utama) di atas
   - Grid artikel dengan filter kategori: Semua, Tips Perawatan, Inspirasi Buket, Gaya Hidup, Event & Pernikahan
   - Card dengan thumbnail, tanggal, judul, excerpt, link "Baca Selengkapnya"

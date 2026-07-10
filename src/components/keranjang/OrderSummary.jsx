@@ -2,7 +2,7 @@
 
 /*
   OrderSummary.jsx
-  Card kanan halaman Keranjang. Sesuai Figma:
+  Card kanan halaman Keranjang.
   Subtotal, Estimasi Pengiriman, Pajak (PPN 11%), garis pemisah,
   Total Harga (besar, bold), button "Lanjut ke Pembayaran",
   2 baris info kecil (pembayaran aman, gratis ongkir).

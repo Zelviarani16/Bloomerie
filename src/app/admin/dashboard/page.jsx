@@ -1,7 +1,7 @@
 /*
   app/admin/dashboard/page.jsx — Dashboard Admin (/admin/dashboard)
 
-  Sesuai Figma: heading + date picker + button "Tambah Produk" di
+  heading + date picker + button "Tambah Produk" di
   header, 3 stat card, grid 2 kolom (chart kiri lebih besar, performa
   kategori kanan lebih kecil), tabel pesanan terbaru di bawah.
 

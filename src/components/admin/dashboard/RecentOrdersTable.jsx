@@ -2,7 +2,7 @@
 
 /*
   RecentOrdersTable.jsx
-  Sesuai Figma: heading "Pesanan Terbaru" + link "Lihat Semua",
+  heading "Pesanan Terbaru" + link "Lihat Semua",
   tabel dengan kolom ID Pesanan, Pelanggan (avatar inisial+nama),
   Produk, Tanggal, Status badge, Total, dan menu titik tiga di akhir.
 */

@@ -5,7 +5,7 @@
   Reusable card artikel — dipakai di BlogPreview (Beranda) dan nanti
   juga di halaman Blog (/blog) supaya konsisten.
 
-  Sesuai design Figma: foto di atas (rounded), kategori kecil warna
+ foto di atas (rounded), kategori kecil warna
   primary uppercase, judul bold, excerpt 2 baris, tanggal di bawah.
 */
 

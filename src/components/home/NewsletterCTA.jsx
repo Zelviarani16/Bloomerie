@@ -3,7 +3,7 @@
 /*
   NewsletterCTA.jsx
   Section paling bawah homepage (sebelum Footer).
-  Sesuai design Figma: background solid primary (maroon), teks putih,
+  background solid primary (maroon), teks putih,
   heading + subtext di tengah, form input email + button "DAFTAR"
   sejajar (input putih, button lebih gelap dari background).
 

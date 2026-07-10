@@ -2,7 +2,7 @@
 
 /*
   PaymentMethod.jsx
-  Sesuai Figma: card dengan grid 2x2, tiap pilihan ada ikon besar,
+  card dengan grid 2x2, tiap pilihan ada ikon besar,
   nama metode, sub-text kecil (bank/provider). Yang terpilih ada
   border + background pink lembut (sama pattern seperti ShippingMethod
   tapi grid bukan list).

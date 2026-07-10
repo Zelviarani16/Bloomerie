@@ -36,7 +36,7 @@ export default function Navbar() {
 
   // Halaman auth (login/register) dan semua halaman admin punya
   // header sendiri yang beda total dari Navbar publik ini (lihat
-  // Figma: Login pakai header simpel, Admin pakai sidebar). Jadi
+  // Login pakai header simpel, Admin pakai sidebar). Jadi
   // Navbar publik ini disembunyikan total di halaman-halaman itu.
   const hideNavbarRoutes = ["/login", "/register", "/lupa-password"];
   const isHidden = hideNavbarRoutes.includes(pathname) || pathname.startsWith("/admin");

@@ -3,7 +3,7 @@
 /*
   BlogPreview.jsx
   Section "Blog & Inspirasi" di Beranda.
-  Sesuai design Figma: background sedikit beda dari putih (neutral),
+  background sedikit beda dari putih (neutral),
   heading + subtext di tengah (center, beda dari FeaturedProducts yang
   rata kiri), grid 3 kolom card artikel di bawahnya.
 */

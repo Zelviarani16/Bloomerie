@@ -2,7 +2,7 @@
 
 /*
   PelangganTable.jsx
-  Sesuai Figma: Tabel dengan kolom:
+  Tabel dengan kolom:
   - Nama Pelanggan (dengan inisial avatar)
   - Email
   - Tanggal Bergabung

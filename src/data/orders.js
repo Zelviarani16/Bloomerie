@@ -1,9 +1,9 @@
 /*
   data/orders.js
   Dummy data riwayat transaksi — sementara sebelum ada backend asli.
-  Status mengikuti 3 kategori di tab filter Figma: menunggu, dikirim,
+  Status mengikuti 3 kategori di tab filter : menunggu, dikirim,
   selesai. Field "items" array karena 1 pesanan bisa berisi >1 produk
-  (lihat baris pertama di Figma: "Midnight Bouquet dan 2 lainnya").
+  (lihat baris pertama di : "Midnight Bouquet dan 2 lainnya").
 */
 
 export const orders = [
@@ -11,7 +11,12 @@ export const orders = [
     id: "BLM-98231",
     date: "12 Okt 2023",
     status: "selesai",
-    items: [{ name: "Midnight Bouquet", image: "/images/products/velvet-crimson.jpg" }],
+    items: [
+      {
+        name: "Midnight Bouquet",
+        image: "/images/products/velvet-crimson.jpg",
+      },
+    ],
     extraItemsCount: 2,
     total: 450000,
   },
@@ -19,7 +24,12 @@ export const orders = [
     id: "BLM-98552",
     date: "15 Okt 2023",
     status: "menunggu",
-    items: [{ name: "Serenity White Orchid", image: "/images/products/ethereal-clouds.jpg" }],
+    items: [
+      {
+        name: "Serenity White Orchid",
+        image: "/images/products/ethereal-clouds.jpg",
+      },
+    ],
     extraItemsCount: 0,
     total: 275000,
   },
@@ -27,7 +37,12 @@ export const orders = [
     id: "BLM-98987",
     date: "18 Okt 2023",
     status: "dikirim",
-    items: [{ name: "Golden Spring Tulips", image: "/images/products/sunny-whisper.webp" }],
+    items: [
+      {
+        name: "Golden Spring Tulips",
+        image: "/images/products/sunny-whisper.webp",
+      },
+    ],
     extraItemsCount: 0,
     total: 300000,
   },

@@ -2,7 +2,7 @@
 
 /*
   HeroSection.jsx
-  Sesuai design Figma: layout 2 kolom (teks kiri, foto kanan),
+  layout 2 kolom (teks kiri, foto kanan),
   background lembut pink-cream, eyebrow text kecil uppercase,
   headline 2 warna (hitam + primary maroon), 2 tombol CTA.
 
@@ -32,7 +32,7 @@ export default function HeroSection() {
     <section
       className="relative overflow-hidden"
       style={{
-        // Gradasi lembut pink-cream sesuai screenshot Figma
+        // Gradasi lembut pink-cream
         background: "linear-gradient(135deg, #FBF1F1 0%, #F8EDED 50%, #FAF6F2 100%)",
       }}
     >

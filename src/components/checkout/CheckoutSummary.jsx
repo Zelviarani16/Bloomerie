@@ -2,7 +2,7 @@
 
 /*
   CheckoutSummary.jsx
-  Sesuai Figma: card kanan dengan list mini item (foto+nama+qty+harga),
+  card kanan dengan list mini item (foto+nama+qty+harga),
   garis pemisah, lalu Subtotal/Ongkos Kirim/Biaya Layanan, Total
   Pembayaran besar, button "Bayar Sekarang", lalu icon row kecil
   (keamanan, garansi, dll — 4 ikon).
