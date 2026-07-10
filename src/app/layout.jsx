@@ -20,7 +20,7 @@ const publicSans = Public_Sans({
 });
 
 export const metadata = {
-  title: "Bloomerie — Toko Buket Online",
+  title: "Bloomerie | Toko Buket Online",
   description: "Keindahan alam dalam setiap kelopak. Buket bunga segar untuk setiap momen berharga Anda.",
 };
 
