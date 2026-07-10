@@ -10,14 +10,13 @@
 */
 
 import { motion } from "framer-motion";
-import { transactionStats } from "@/data/admin-transactions";
 
-export default function TransactionStats() {
+export default function TransactionStats({ stats }) {
   const items = [
-    { label: "Total Pesanan", value: transactionStats.totalPesanan.toLocaleString("id-ID"), color: "var(--color-ink)" },
-    { label: "Pending", value: transactionStats.pending, color: "var(--color-primary)" },
-    { label: "Diproses", value: transactionStats.diproses, color: "var(--color-ink)" },
-    { label: "Dikirim", value: transactionStats.dikirim, color: "var(--color-tertiary)" },
+    { label: "Total Pesanan", value: stats?.totalPesanan?.toLocaleString("id-ID") || 0, color: "var(--color-ink)" },
+    { label: "Pending", value: stats?.pending || 0, color: "var(--color-primary)" },
+    { label: "Diproses", value: stats?.diproses || 0, color: "var(--color-ink)" },
+    { label: "Dikirim", value: stats?.dikirim || 0, color: "var(--color-tertiary)" },
   ];
 
   return (

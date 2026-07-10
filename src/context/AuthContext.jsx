@@ -161,3 +161,9 @@ export function useAuth() {
   }
   return context;
 }
+
+// Export functions untuk admin use
+export function getAllUsers() {
+  const registered = getRegisteredUsers();
+  return [...DEFAULT_USERS.map(u => ({ ...u, password: undefined })), ...registered.map(u => ({ ...u, password: undefined }))];
+}
